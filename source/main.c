@@ -14,20 +14,24 @@
 
 int main(void) {
     /* Insert DDR and PORT initializations */
-	DDRB = 0xFF; PORTA = 0xFF;
+	DDRA = 0x00; PORTA = 0xFF;
 	DDRB = 0xFF; PORTB = 0x00;
     /* Insert your solution below */
     unsigned char tmpB = 0x00;
-    unsigned char tmpA = 0x00;
-    while (1) {
-	tmpA = PINA & 0x01;
+    unsigned char tmpA1; //= PINA & 0X01;
+    unsigned char tmpA0; // = PINA & 0x02;
 
-	if (tmpA == 0x01) {
-		tmpB = (tmpB & 0xFC) | 0x01;
-	} else {
-		tmpB= (tmpB & 0xFC) | 0x02;
+    while (1) {
+	tmpA1 = PINA & 0x02;
+	tmpA0 = PINA & 0x01;
+
+	if ((tmpA1 == 0x00) && (tmpA0 == 0x01)) {
+		tmpB = 0x01; //(tmpB & 0xFC) | 0x01;
 	}
-	PORTB =tmpB;
+	else {
+		tmpB = 0x00;
+	}
+	PORTB = tmpB;
     }
-    return 0;
+    return 1;
 }
