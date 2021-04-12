@@ -8,6 +8,8 @@
  *	code, is my own original work.
  */
 #include <avr/io.h>
+#include <stdlib.h>
+#include <stdio.h>
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
@@ -25,13 +27,13 @@ int main(void) {
     unsigned char tmpC = 0x00;
     unsigned char tmpD = 0x00;
     unsigned char totalWeight = 0x00;
-    unsigned char difference = 0x00;
+  //  unsigned char difference = 0x00;
 
     while (1) {
 	tmpA = PINA; // & 0x08;
 	tmpB = PINB; // & 0x04;
 	tmpC = PINC; // & 0x02;
-	difference = 0x00;
+//	difference = 0x00;
 	totalWeight = tmpA + tmpB + tmpC;
 	tmpD = totalWeight >> 2;
 	tmpD = tmpD & 0xFC;
@@ -40,15 +42,15 @@ int main(void) {
 		tmpD = tmpD | 0x01; //0000001
 	}
 
-	if (tmpA > tmpC) {
-		difference = tmpA - tmpC; //00000010
-	}
-	else {
-		difference = tmpC - tmpA;
-	}
+//	if (tmpA > tmpC) {
+//		difference = tmpA - tmpC; //00000010
+//	}
+//	else {
+//		difference = tmpC - tmpA;
+//	}
 
 
-	if (difference > 80) {
+	if (abs(tmpA - tmpC) > 80) {
 		tmpD = tmpD | 0x02;
 	}
 	
