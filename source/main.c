@@ -20,17 +20,18 @@ int main(void) {
 	DDRD = 0xFF; PORTD = 0x00;
     /* Insert your solution below */
 //    unsigned char tmpB = 0x00;
-    unsigned char tmpA; //= PINA & 0X01;
-    unsigned char tmpB; // = PINA & 0x02;
-    unsigned char tmpC;
-    unsigned char tmpD;
-    unsigned char totalWeight;
-    unsigned char difference;
+    unsigned char tmpA = 0x00; //= PINA & 0X01;
+    unsigned char tmpB = 0x00; // = PINA & 0x02;
+    unsigned char tmpC = 0x00;
+    unsigned char tmpD = 0x00;
+    unsigned char totalWeight = 0x00;
+    unsigned char difference = 0x00;
 
     while (1) {
 	tmpA = PINA; // & 0x08;
 	tmpB = PINB; // & 0x04;
 	tmpC = PINC; // & 0x02;
+	difference = 0x00;
 	totalWeight = tmpA + tmpB + tmpC;
 	tmpD = totalWeight >> 2;
 	tmpD = tmpD & 0xFC;
