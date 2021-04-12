@@ -51,7 +51,7 @@ int main(void) {
 		tmpD = tmpD | 0x02;
 	}
 	
-	totalWeight = totalWeight >> 2;
+//	totalWeight = totalWeight >> 2;
 
 	PORTD = tmpD | totalWeight;    
     }
