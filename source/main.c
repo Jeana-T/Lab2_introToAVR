@@ -31,9 +31,10 @@ int main(void) {
 	tmpA = PINA; // & 0x08;
 	tmpB = PINB; // & 0x04;
 	tmpC = PINC; // & 0x02;
-	tmpD = 0x00;
 	totalWeight = tmpA + tmpB + tmpC;
-	
+	tmpD = totalWeight >> 2;
+	tmpD = tmpD & 0xFC;
+
 	if (totalWeight > 140) {
 		tmpD = tmpD | 0x01; //0000001
 	}
