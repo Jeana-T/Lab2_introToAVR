@@ -53,7 +53,7 @@ int main(void) {
 	
 //	totalWeight = totalWeight >> 2;
 
-	PORTD = tmpD | totalWeight;    
+	PORTD = tmpD;    
     }
     return 1;
 }
